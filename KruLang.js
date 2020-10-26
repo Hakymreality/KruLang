@@ -67,3 +67,21 @@ function parse(program) {
 }
 
 console.log(parse("+(a, 10)"));
+
+const specialForms = Object.create(null);
+
+function evaluate(expr,scope) {
+    if (expr.type == "value") {
+        return expr.value;
+    }else if (expr.type == "word"){
+        if (expr.name in scope) {
+            return scope[expr.name]
+        }else{
+            throw new ReferenceError(
+                `Undefined Binding: ${expr.name}`
+            )
+        }
+    }else if (expr.type == "apply") {
+        let {operator, args}
+    }
+}
